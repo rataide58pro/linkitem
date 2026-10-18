@@ -10,6 +10,6 @@
 // ============================================
 
 const ACHADINHOS = {
-  planilha_configuracoes: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQH064NRkyljyAKXMj4N1JYVvzXSLNMsWN_ctB-L3kWxu_7ouuwDbOPXxeaPXx0VmpIdZsot2ZCda_8/pub?gid=480609827&single=true&output=csv",
-  planilha_catalogo: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQH064NRkyljyAKXMj4N1JYVvzXSLNMsWN_ctB-L3kWxu_7ouuwDbOPXxeaPXx0VmpIdZsot2ZCda_8/pub?gid=952991100&single=true&output=csv",
+  planilha_configuracoes: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLqQYr_FbumngurFp4LAAO2zd22vjVe_c4zAcxCKras0oFWcE7_AKcCYupjLGsCcY-fNxyphHymaY-/pub?gid=480609827&single=true&output=csv",
+  planilha_catalogo: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLqQYr_FbumngurFp4LAAO2zd22vjVe_c4zAcxCKras0oFWcE7_AKcCYupjLGsCcY-fNxyphHymaY-/pub?gid=952991100&single=true&output=csv",
 };
