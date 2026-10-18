@@ -1,5 +1,5 @@
 // ============================================
-// Planiloja Achadinhos — Configuração
+// Linkitem — Configuração
 // ============================================
 // Instruções:
 // 1. Cole abaixo as URLs das abas da sua planilha publicada
