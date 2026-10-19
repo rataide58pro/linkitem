@@ -1899,7 +1899,7 @@
       const hasPromo = currentProduct.precoPromo && currentProduct.precoPromo > 0 && currentProduct.preco > 0 && currentProduct.precoPromo < currentProduct.preco;
       var priceEl = document.getElementById('modalPrice');
       if (currentProduct.preco > 0) {
-        var prefixo = currentProduct.tipo !== 'DIGITAL' ? '<span style="font-size:0.85rem;font-weight:500;color:var(--text-muted)">a partir de </span>' : '';
+        var prefixo = currentProduct.tipo !== 'DIGITAL' ? '<span style="font-size:0.85rem;font-weight:500;color:var(--text-muted)">Preço Normal: </span>' : '';
         priceEl.style.display = '';
         priceEl.innerHTML = prefixo + '<span class="price-current">R$ ' + fp(hasPromo ? currentProduct.precoPromo : currentProduct.preco) + '</span>' + (hasPromo ? '<span class="price-old">R$ ' + fp(currentProduct.preco) + '</span>' : '');
       } else {
