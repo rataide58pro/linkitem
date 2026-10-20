@@ -967,7 +967,7 @@
     }
 
     .footer-disclosure {
-      max-width: 640px;
+      max-width: 800px;
       margin: 0 auto 12px;
       font-size: 1rem;
       line-height: 1.5;
@@ -1834,7 +1834,7 @@
       var hasPromo = p.precoPromo && p.precoPromo > 0 && p.preco > 0 && p.precoPromo < p.preco;
       var priceHTML = '';
       if (p.preco > 0) {
-        var prefixo = p.tipo !== 'DIGITAL' ? '<span style="font-size:0.72rem;font-weight:500;color:var(--text-muted)">Preço Normal: </span>' : '';
+        var prefixo = p.tipo !== 'DIGITAL' ? '<span style="font-size:1rem;font-weight:500;color:var(--text-muted)">Por: </span>' : '';
         priceHTML = '<div class="product-price"><span class="price-current">' + prefixo + 'R$ ' + fp(hasPromo ? p.precoPromo : p.preco) + '</span>' + (hasPromo ? '<span class="price-old">R$ ' + fp(p.preco) + '</span>' : '') + '</div>';
       }
       return '<div class="product-card" onclick="openProductModal(' + idx + ')">' +
@@ -1899,7 +1899,7 @@
       const hasPromo = currentProduct.precoPromo && currentProduct.precoPromo > 0 && currentProduct.preco > 0 && currentProduct.precoPromo < currentProduct.preco;
       var priceEl = document.getElementById('modalPrice');
       if (currentProduct.preco > 0) {
-        var prefixo = currentProduct.tipo !== 'DIGITAL' ? '<span style="font-size:0.85rem;font-weight:500;color:var(--text-muted)">Preço Normal: </span>' : '';
+        var prefixo = currentProduct.tipo !== 'DIGITAL' ? '<span style="font-size:1rem;font-weight:500;color:var(--text-muted)">Por: </span>' : '';
         priceEl.style.display = '';
         priceEl.innerHTML = prefixo + '<span class="price-current">R$ ' + fp(hasPromo ? currentProduct.precoPromo : currentProduct.preco) + '</span>' + (hasPromo ? '<span class="price-old">R$ ' + fp(currentProduct.preco) + '</span>' : '');
       } else {
