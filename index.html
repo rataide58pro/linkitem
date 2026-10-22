@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carregando... — Linkitem</title>
+  <title>Carregando... — Teste</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
@@ -433,7 +433,7 @@
 
     .banner-img {
       width: 100%;
-      height: 260px;
+      height: 300px;
       object-fit: cover;
       display: block;
     }
@@ -469,6 +469,140 @@
     .banner-sub {
       font-size: 1rem;
       color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ============================================
+   BANNER CARROSSEL
+   ============================================ */
+    .carrossel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--gray-100);
+    }
+
+	.carrossel-track {
+	  display: flex;
+	  width: 100%;
+	  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+	  will-change: transform;
+	}
+
+	.carrossel-slide {
+	  flex: 0 0 100%;
+	  width: 100%;
+	  min-width: 0;
+	  position: relative;
+	  display: block;
+	  overflow: hidden;
+	}
+
+	.carrossel-slide {
+	  /* mantenha tudo que está acima e adicione: */
+	  aspect-ratio: 1200 / 300;   /* ← mude para 1200 / 400 se preferir mais alto */
+	}
+
+	.carrossel-slide .banner-img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	}
+
+    .carrossel-prev,
+    .carrossel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      font-size: 1.6rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      border: none;
+      padding: 0 0 4px;
+    }
+
+    .carrossel:hover .carrossel-prev,
+    .carrossel:hover .carrossel-next,
+    .carrossel-prev:focus-visible,
+    .carrossel-next:focus-visible {
+      opacity: 1;
+    }
+
+    .carrossel-prev { left: 12px; }
+    .carrossel-next { right: 12px; }
+
+    .carrossel-prev:hover,
+    .carrossel-next:hover {
+      background: var(--white);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .carrossel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 5;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 7px 11px;
+      border-radius: 50px;
+      backdrop-filter: blur(4px);
+    }
+
+    .carrossel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .carrossel-dot.active {
+      background: var(--white);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    .carrossel-dot:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .carrossel-prev,
+      .carrossel-next {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        opacity: 0.9;
+      }
+      .carrossel-dots {
+        bottom: 8px;
+        padding: 5px 9px;
+        gap: 6px;
+      }
+      .carrossel-dot { width: 7px; height: 7px; }
+      .carrossel-dot.active { width: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .carrossel-track { transition: none; }
     }
 
     /* ============================================
@@ -1529,6 +1663,16 @@
         else if (field === 'BANNER TAG') cfg.bannerTag = val;
         else if (field === 'BANNER TÍTULO' || field === 'BANNER TITULO') cfg.bannerTitulo = val;
         else if (field === 'BANNER SUBTÍTULO' || field === 'BANNER SUBTITULO') cfg.bannerSubtitulo = val;
+        // Carrossel — banners 2 a 5 (compatível com "Banner 2 (URL)" ou "Banner 2 URL")
+        else if (field === 'BANNER 2 (URL)' || field === 'BANNER 2 URL') cfg.banner2Url = val;
+        else if (field === 'BANNER 2 LINK') cfg.banner2Link = val;
+        else if (field === 'BANNER 3 (URL)' || field === 'BANNER 3 URL') cfg.banner3Url = val;
+        else if (field === 'BANNER 3 LINK') cfg.banner3Link = val;
+        else if (field === 'BANNER 4 (URL)' || field === 'BANNER 4 URL') cfg.banner4Url = val;
+        else if (field === 'BANNER 4 LINK') cfg.banner4Link = val;
+        else if (field === 'BANNER 5 (URL)' || field === 'BANNER 5 URL') cfg.banner5Url = val;
+        else if (field === 'BANNER 5 LINK') cfg.banner5Link = val;
+        else if (field === 'BANNER INTERVALO' || field === 'INTERVALO BANNER') cfg.bannerIntervalo = parseInt(val) || 5000;
         else if (field === 'TITULO DO SITE' || field === 'TÍTULO DO SITE' || field === 'TITULO DA PAGINA') cfg.tituloSite = val;
         else if (field === 'DESCRICAO DO SITE' || field === 'DESCRIÇÃO DO SITE' || field === 'META DESCRICAO' || field === 'META DESCRIÇÃO') cfg.descricaoSite = val;
         else if (field === 'LOJA ATIVA') cfg.lojaAtiva = val.toUpperCase() !== 'NÃO' && val.toUpperCase() !== 'NAO';
@@ -1686,35 +1830,8 @@
         CONFIG.corSecundaria = secondaryHex;
       }
 
-      // Banner
-      if (CONFIG.bannerUrl) {
-        const banner = document.getElementById('bannerSection');
-        const hasLink = CONFIG.bannerLink;
-        let overlayHTML = '';
-        if (CONFIG.bannerTag || CONFIG.bannerTitulo || CONFIG.bannerSubtitulo) {
-          overlayHTML = `<div class="banner-overlay">
-        ${CONFIG.bannerTag ? `<div class="banner-tag">${CONFIG.bannerTag}</div>` : ''}
-        ${CONFIG.bannerTitulo ? `<div class="banner-title">${CONFIG.bannerTitulo}</div>` : ''}
-        ${CONFIG.bannerSubtitulo ? `<div class="banner-sub">${CONFIG.bannerSubtitulo}</div>` : ''}
-      </div>`;
-        }
-        let wrapperOpen, wrapperClose;
-        if (hasLink && hasLink.startsWith('http')) {
-          wrapperOpen = `<a href="${hasLink}" class="banner-wrap">`;
-          wrapperClose = `</a>`;
-        } else if (hasLink) {
-          wrapperOpen = `<div class="banner-wrap" style="cursor:pointer" onclick="bannerFilter('${hasLink.replace(/'/g, "\\'")}')">`;
-          wrapperClose = `</div>`;
-        } else {
-          wrapperOpen = `<div class="banner-wrap">`;
-          wrapperClose = `</div>`;
-        }
-        banner.innerHTML = `${wrapperOpen}
-      <img class="banner-img" src="${fixImg(CONFIG.bannerUrl)}" alt="Banner" onerror="this.parentElement.parentElement.style.display='none'">
-      ${overlayHTML}
-    ${wrapperClose}`;
-        banner.classList.add('show');
-      }
+      // Banner / Carrossel (slide 1 = Banner (URL) original + slides 2-5)
+      renderBannerSection();
 
       // Footer socials
       const socials = document.getElementById('footerSocials');
@@ -2028,6 +2145,199 @@
         document.body.classList.add('has-channel-float');
       }
     }
+
+    // ============================================
+    // BANNER / CARROSSEL
+    // ============================================
+    function renderBannerSection() {
+      var banner = document.getElementById('bannerSection');
+      var banners = [];
+
+      // Slide 1 = configuração original (mantém overlay e link)
+      if (CONFIG.bannerUrl) {
+        banners.push({
+          imagem: CONFIG.bannerUrl,
+          link: CONFIG.bannerLink,
+          tag: CONFIG.bannerTag,
+          titulo: CONFIG.bannerTitulo,
+          subtitulo: CONFIG.bannerSubtitulo
+        });
+      }
+      // Slides 2 a 5 (imagens do Canva — sem overlay)
+      for (var i = 2; i <= 5; i++) {
+        var img = CONFIG['banner' + i + 'Url'];
+        if (img) banners.push({ imagem: img, link: CONFIG['banner' + i + 'Link'] });
+      }
+
+      if (!banners.length) {
+        banner.classList.remove('show');
+        return;
+      }
+
+      if (banners.length === 1) {
+        renderSingleBanner(banner, banners[0]);
+      } else {
+        renderCarrosselBanner(banner, banners);
+      }
+    }
+
+    function renderSingleBanner(banner, b) {
+      var overlayHTML = '';
+      if (b.tag || b.titulo || b.subtitulo) {
+        overlayHTML = '<div class="banner-overlay">' +
+          (b.tag ? '<div class="banner-tag">' + b.tag + '</div>' : '') +
+          (b.titulo ? '<div class="banner-title">' + b.titulo + '</div>' : '') +
+          (b.subtitulo ? '<div class="banner-sub">' + b.subtitulo + '</div>' : '') +
+          '</div>';
+      }
+      var hasLink = b.link;
+      var open, close;
+      if (hasLink && hasLink.startsWith('http')) {
+        open = '<a href="' + hasLink + '" class="banner-wrap">';
+        close = '</a>';
+      } else if (hasLink) {
+        open = '<div class="banner-wrap" style="cursor:pointer" onclick="bannerFilter(\'' + hasLink.replace(/'/g, "\\'") + '\')">';
+        close = '</div>';
+      } else {
+        open = '<div class="banner-wrap">';
+        close = '</div>';
+      }
+      banner.innerHTML = open +
+        '<img class="banner-img" src="' + fixImg(b.imagem) + '" alt="Banner" onerror="this.parentElement.parentElement.style.display=\'none\'">' +
+        overlayHTML + close;
+      banner.classList.add('show');
+    }
+
+    function renderCarrosselBanner(banner, banners) {
+      var slidesHTML = banners.map(function(b, i) {
+        var overlayHTML = '';
+        if (b.tag || b.titulo || b.subtitulo) {
+          overlayHTML = '<div class="banner-overlay">' +
+            (b.tag ? '<div class="banner-tag">' + b.tag + '</div>' : '') +
+            (b.titulo ? '<div class="banner-title">' + b.titulo + '</div>' : '') +
+            (b.subtitulo ? '<div class="banner-sub">' + b.subtitulo + '</div>' : '') +
+            '</div>';
+        }
+        var imgHTML = '<img class="banner-img" src="' + fixImg(b.imagem) + '" alt="Banner ' + (i + 1) + '" onerror="this.style.display=\'none\';this.parentElement.style.background=\'var(--gray-100)\';">';
+        var inner = imgHTML + overlayHTML;
+        var hasLink = b.link;
+        if (hasLink && hasLink.startsWith('http')) {
+          return '<a class="carrossel-slide" href="' + hasLink + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>';
+        } else if (hasLink) {
+          return '<div class="carrossel-slide" style="cursor:pointer" onclick="bannerFilter(\'' + hasLink.replace(/'/g, "\\'") + '\')">' + inner + '</div>';
+        }
+        return '<div class="carrossel-slide">' + inner + '</div>';
+      }).join('');
+
+      var dotsHTML = banners.map(function(_, i) {
+        return '<button class="carrossel-dot' + (i === 0 ? ' active' : '') + '" onclick="carrosselGoTo(' + i + ')" aria-label="Banner ' + (i + 1) + '"></button>';
+      }).join('');
+
+      banner.innerHTML = '<div class="carrossel" id="bannerCarrossel">' +
+        '<div class="carrossel-track" id="carrosselTrack">' + slidesHTML + '</div>' +
+        '<button class="carrossel-prev" onclick="carrosselPrev()" aria-label="Banner anterior">‹</button>' +
+        '<button class="carrossel-next" onclick="carrosselNext()" aria-label="Próximo banner">›</button>' +
+        '<div class="carrossel-dots">' + dotsHTML + '</div>' +
+        '</div>';
+      banner.classList.add('show');
+
+      window._carrosselState = {
+        index: 0,
+        count: banners.length,
+        interval: CONFIG.bannerIntervalo || 5000,
+        timer: null,
+        paused: false
+      };
+
+      startCarrossel();
+
+      var el = document.getElementById('bannerCarrossel');
+      if (!el) return;
+      el.addEventListener('mouseenter', pauseCarrossel);
+      el.addEventListener('mouseleave', startCarrossel);
+      el.addEventListener('focusin', pauseCarrossel);
+      el.addEventListener('focusout', startCarrossel);
+
+      // Swipe (mobile)
+      var startX = 0, moved = false;
+      el.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        moved = false;
+      }, { passive: true });
+      el.addEventListener('touchmove', function(e) {
+        if (Math.abs(e.touches[0].clientX - startX) > 10) moved = true;
+      }, { passive: true });
+      el.addEventListener('touchend', function(e) {
+        if (!moved) return;
+        var diff = e.changedTouches[0].clientX - startX;
+        if (diff > 50) carrosselPrev();
+        else if (diff < -50) carrosselNext();
+        moved = false;
+      }, { passive: true });
+    }
+
+    function updateCarrossel() {
+      var s = window._carrosselState;
+      if (!s) return;
+      var track = document.getElementById('carrosselTrack');
+      if (!track) return;
+      track.style.transform = 'translateX(-' + (s.index * 100) + '%)';
+      document.querySelectorAll('.carrossel-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === s.index);
+      });
+    }
+
+    function carrosselGoTo(i) {
+      var s = window._carrosselState;
+      if (!s) return;
+      s.index = i;
+      updateCarrossel();
+      if (!s.paused) startCarrossel();
+    }
+
+    function carrosselNext() {
+      var s = window._carrosselState;
+      if (!s) return;
+      s.index = (s.index + 1) % s.count;
+      updateCarrossel();
+      if (!s.paused) startCarrossel();
+    }
+
+    function carrosselPrev() {
+      var s = window._carrosselState;
+      if (!s) return;
+      s.index = (s.index - 1 + s.count) % s.count;
+      updateCarrossel();
+      if (!s.paused) startCarrossel();
+    }
+
+    function startCarrossel() {
+      var s = window._carrosselState;
+      if (!s || s.count < 2) return;
+      pauseCarrossel();
+      s.paused = false;
+      s.timer = setInterval(function() {
+        s.index = (s.index + 1) % s.count;
+        updateCarrossel();
+      }, s.interval);
+    }
+
+    function pauseCarrossel() {
+      var s = window._carrosselState;
+      if (!s) return;
+      s.paused = true;
+      if (s.timer) {
+        clearInterval(s.timer);
+        s.timer = null;
+      }
+    }
+
+    document.addEventListener('visibilitychange', function() {
+      var s = window._carrosselState;
+      if (!s) return;
+      if (document.hidden) pauseCarrossel();
+      else if (!s.paused) startCarrossel();
+    });
 
     // ============================================
     // HELPERS
